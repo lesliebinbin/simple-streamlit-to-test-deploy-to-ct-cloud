@@ -1,6 +1,6 @@
-FROM python:3.12.11
+FROM registry-crs-huadong1.ctyun.cn/open-source/python:3.9-slim
 
-ADD requirements.txt /app
+ADD requirements.txt .
 
 RUN pip3 install -r requirements.txt && \
     rm requirements.txt
@@ -9,4 +9,6 @@ EXPOSE 8501
 
 ADD app /app
 
-CMD ["streamlit", "run", "/app/streamlit_app.py", "--server.port", "8501"]
+WORKDIR /app
+
+CMD ["streamlit", "run", "streamlit_app.py", "--server.port", "8501"]

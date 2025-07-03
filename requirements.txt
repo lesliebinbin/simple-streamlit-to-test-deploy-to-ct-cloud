@@ -1,0 +1,11 @@
+wheel
+streamlit
+dotenv
+openai
+numpy
+pandas
+matplotlib
+psycopg2-binary
+sqlalchemy
+openpyxl
+xlsxwriter

@@ -109,7 +109,6 @@ hs_err_pid*
 *_files
 .venv
 **/*.ipynb
-**/*.txt
 
 
 
