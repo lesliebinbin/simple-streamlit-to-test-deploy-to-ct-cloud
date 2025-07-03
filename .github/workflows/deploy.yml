@@ -28,7 +28,7 @@ jobs:
 
       - name: Set up Kubeconfig
         run: |
-          mkdir -p $HOME/.kube
+          mkdir -p $HOME/.kube || \
           echo "${{ secrets.K8S_CONFIG }}" > $HOME/.kube/config
 
       - name: Deploy to Kubernetes
