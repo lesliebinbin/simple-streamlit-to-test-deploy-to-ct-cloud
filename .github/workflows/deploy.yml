@@ -34,15 +34,22 @@ jobs:
           context: ${{ secrets.K8S_CONTEXT }}
         id: setcontext
 
+      - name: Render k8s-deployment.yml
+        uses: nowactions/envsubst@v1
+        with: 
+          input: ./deployment-dev-template.yml
+          output: ./deployment-dev.yml
+        env:
+          DOCKER_IMAGE_PREFIX: ${{ secrets.DOCKER_REGISTRY_INTERNAL }}/${{ secrets.DOCKER_USERNAME }}
+
+
       - name: Deploy to Kubernetes
         uses: azure/k8s-deploy@v5
         with:
           namespace: ${{secrets.K8S_NAMESPACE}}
-          images: |
-            ${{ secrets.DOCKER_REGISTRY_INTERNAL }}/${{ secrets.DOCKER_USERNAME }}/streamlit-app:latest
           imagepullsecrets: |
             ${{env.K8S_IMAGE_PULL_SECRETS}}
           manifests: |
-            k8s-dev-deployment.yml
+            deployment-dev.yml
           
         
