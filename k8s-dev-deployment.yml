@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: streamlit-app
-        image: ${DOCKER_REGISTRY_INTERNAL}/${DOCKER_USERNAME}/streamlit-app:latest
+        image: streamlit-app
         ports:
         - containerPort: 8501
         env:
