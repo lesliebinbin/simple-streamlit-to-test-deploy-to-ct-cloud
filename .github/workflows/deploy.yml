@@ -37,10 +37,10 @@ jobs:
           mkdir -p $HOME/.kube || \
           echo "${{ env.K8S_CONFIG }}" > $HOME/.kube/config
 
-      - name: Build and push Docker image
-        run: |
-          docker build -t ${{ env.DOCKER_REGISTRY_EXTERNAL }}/${{ secrets.DOCKER_USERNAME }}/streamlit-app:latest .
-          docker push ${{ env.DOCKER_REGISTRY_EXTERNAL }}/${{ secrets.DOCKER_USERNAME }}/streamlit-app:latest
+      # - name: Build and push Docker image
+      #   run: |
+      #     docker build -t ${{ env.DOCKER_REGISTRY_EXTERNAL }}/${{ secrets.DOCKER_USERNAME }}/streamlit-app:latest .
+      #     docker push ${{ env.DOCKER_REGISTRY_EXTERNAL }}/${{ secrets.DOCKER_USERNAME }}/streamlit-app:latest
 
       - name: Deploy to Kubernetes
         uses: azure/k8s-deploy@v5
