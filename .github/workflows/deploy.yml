@@ -48,7 +48,7 @@ jobs:
         with:
           namespace: ${{secrets.K8S_NAMESPACE}}
           imagepullsecrets: |
-            ${{env.K8S_IMAGE_PULL_SECRETS}}
+            ${{secrets.K8S_IMAGE_PULL_SECRETS}}
           manifests: |
             deployment-dev.yml
           
